@@ -1,4 +1,4 @@
-# Base repository for STM32_MODULE
+# Base Repository for STM32_MODULE
 Contains STM32CubeIDE project file as well as Makefile and ST-LINK cli executable for both IDE and CLI based workflows.
 Also contains basic user setup to allow natural printf usage (through SWO) using ITM port 0, as well as comment-free user source file.
 Recommendation is to use STM32CubeIDE for GUI configuration as well as initial debugging, then move to vim/emacs for bulk of development.
