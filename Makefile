@@ -161,7 +161,7 @@ $(BUILD_DIR):
 
 .PHONY: program
 program: $(BUILD_DIR)/$(TARGET).bin
-	printf '\n' | $(ST-LINK) -P build/Dash.bin 0x08000000 -V -run
+	printf '\n' | $(ST-LINK) -P build/Dash.bin 0x08000000 -V -Q -run
 
 #######################################
 # clean up
