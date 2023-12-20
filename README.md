@@ -4,4 +4,4 @@ Also contains basic user setup to allow natural printf usage (through SWO) using
 Recommendation is to use STM32CubeIDE for GUI configuration as well as initial debugging, then move to vim/emacs for bulk of development.
 
 ## STM32_MODULE PINOUT
-![STM32F103C8T6](https://github.com/cooperwo1f/STM32_MODULE/assets/43880675/3004c5a7-0f13-4968-9875-d2fa88064009)
+![STM32F103C8T6](https://github.com/cooperwo1f/STM32_MODULE/assets/43880675/254fc41f-39e3-4bec-84f3-00c2a4a8aa46)
