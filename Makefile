@@ -162,7 +162,6 @@ $(BUILD_DIR)/$(COMPILE_FLAGS): | $(BUILD_DIR)
 	@echo "Creating $(BUILD_DIR)/$(COMPILE_FLAGS)"
 	@echo "$(CFLAGS)" | sed -E 's/(-I\.\/|-I)([^\/]+)/-I..\/\2/g' | tr ' ' '\n' > "$(BUILD_DIR)/$(COMPILE_FLAGS)"
 
-
 $(BUILD_DIR):
 	mkdir $@
 
