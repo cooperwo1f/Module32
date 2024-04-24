@@ -30,6 +30,8 @@ OPT = -Og
 BUILD_DIR = build
 # ST-LINK cli exec directory
 ST-LINK = ST-LINK_CLI.exe
+# Compile flags
+COMPILE_FLAGS = compile_flags.txt
 
 ######################################
 # source
@@ -127,7 +129,7 @@ LIBDIR =
 LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
 # default action: build all
-all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin $(BUILD_DIR)/$(COMPILE_FLAGS)
 
 
 #######################################
@@ -155,6 +157,10 @@ $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@	
+
+$(BUILD_DIR)/$(COMPILE_FLAGS): | $(BUILD_DIR)
+	@echo "Creating $(BUILD_DIR)/$(COMPILE_FLAGS)"
+	@echo "$(CFLAGS)" | sed -E 's/(-I\.\/|-I)([^\/]+)/-I..\/\2/g' | tr ' ' '\n' > "$(BUILD_DIR)/$(COMPILE_FLAGS)"
 
 $(BUILD_DIR):
 	mkdir $@
