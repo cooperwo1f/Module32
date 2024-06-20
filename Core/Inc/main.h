@@ -63,20 +63,14 @@ void Error_Handler(void);
 #define LR1_GPIO_Port GPIOA
 #define LB1_Pin GPIO_PIN_4
 #define LB1_GPIO_Port GPIOA
-#define LG2_Pin GPIO_PIN_7
-#define LG2_GPIO_Port GPIOA
-#define LR2_Pin GPIO_PIN_6
-#define LR2_GPIO_Port GPIOA
 #define LB2_Pin GPIO_PIN_5
 #define LB2_GPIO_Port GPIOA
-#define LG3_Pin GPIO_PIN_11
-#define LG3_GPIO_Port GPIOB
+#define LR2_Pin GPIO_PIN_6
+#define LR2_GPIO_Port GPIOA
+#define LG2_Pin GPIO_PIN_7
+#define LG2_GPIO_Port GPIOA
 #define LED_Pin GPIO_PIN_8
 #define LED_GPIO_Port GPIOA
-#define LR3_Pin GPIO_PIN_11
-#define LR3_GPIO_Port GPIOA
-#define LB3_Pin GPIO_PIN_12
-#define LB3_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 
