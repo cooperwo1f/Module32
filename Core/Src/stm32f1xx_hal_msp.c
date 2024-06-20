@@ -29,10 +29,6 @@ extern DMA_HandleTypeDef hdma_tim3_ch4_up;
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-extern DMA_HandleTypeDef hdma_tim2_up;
-extern DMA_HandleTypeDef hdma_tim3_up;
-extern DMA_HandleTypeDef hdma_tim4_up;
-
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -123,22 +119,6 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(TIM2_IRQn);
   /* USER CODE BEGIN TIM2_MspInit 1 */
-    /* TIM1 DMA Init */
-    /* TIM1_UP Init */
-    hdma_tim2_up.Instance = DMA1_Channel2;
-    hdma_tim2_up.Init.Direction = DMA_MEMORY_TO_PERIPH;
-    hdma_tim2_up.Init.PeriphInc = DMA_PINC_DISABLE;
-    hdma_tim2_up.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_tim2_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-    hdma_tim2_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-    hdma_tim2_up.Init.Mode = DMA_CIRCULAR;
-    hdma_tim2_up.Init.Priority = DMA_PRIORITY_LOW;
-    if (HAL_DMA_Init(&hdma_tim2_up) != HAL_OK)
-    {
-      Error_Handler();
-    }
-
-    __HAL_LINKDMA(htim_base,hdma[TIM_DMA_ID_UPDATE],hdma_tim2_up);
   /* USER CODE END TIM2_MspInit 1 */
   }
   else if(htim_base->Instance==TIM3)
@@ -173,22 +153,6 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(TIM3_IRQn);
   /* USER CODE BEGIN TIM3_MspInit 1 */
-    /* TIM1 DMA Init */
-    /* TIM1_UP Init */
-    hdma_tim2_up.Instance = DMA1_Channel3;
-    hdma_tim2_up.Init.Direction = DMA_MEMORY_TO_PERIPH;
-    hdma_tim2_up.Init.PeriphInc = DMA_PINC_DISABLE;
-    hdma_tim2_up.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_tim2_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-    hdma_tim2_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-    hdma_tim2_up.Init.Mode = DMA_CIRCULAR;
-    hdma_tim2_up.Init.Priority = DMA_PRIORITY_LOW;
-    if (HAL_DMA_Init(&hdma_tim2_up) != HAL_OK)
-    {
-      Error_Handler();
-    }
-
-    __HAL_LINKDMA(htim_base,hdma[TIM_DMA_ID_UPDATE],hdma_tim3_up);
   /* USER CODE END TIM3_MspInit 1 */
   }
 
