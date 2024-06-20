@@ -173,6 +173,25 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* Configure GPIO pin Output Levels */
+  HAL_GPIO_WritePin(LR1_GPIO_Port, LR1_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LG1_GPIO_Port, LG1_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LB1_GPIO_Port, LB1_Pin, GPIO_PIN_SET);
+
+  /* Configure LED 1 Parameters */
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+
+  /* Configure LED 1 GPIO pins : LR1_Pin LG1_Pin LB1_Pin */
+  GPIO_InitStruct.Pin = LR1_Pin;
+  HAL_GPIO_Init(LR1_GPIO_Port, &GPIO_InitStruct);
+
+  GPIO_InitStruct.Pin = LG1_Pin;
+  HAL_GPIO_Init(LG1_GPIO_Port, &GPIO_InitStruct);
+
+  GPIO_InitStruct.Pin = LB1_Pin;
+  HAL_GPIO_Init(LB1_GPIO_Port, &GPIO_InitStruct);
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
