@@ -59,9 +59,6 @@ extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 /* USER CODE BEGIN EV */
-extern DMA_HandleTypeDef hdma_tim2_up;
-extern DMA_HandleTypeDef hdma_tim3_up;
-extern DMA_HandleTypeDef hdma_tim4_up;
 /* USER CODE END EV */
 
 /******************************************************************************/

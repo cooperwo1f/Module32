@@ -44,12 +44,8 @@
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
-DMA_HandleTypeDef hdma_tim2_up;
-DMA_HandleTypeDef hdma_tim3_up;
 /* USER CODE BEGIN PV */
-
 /* USER CODE END PV */
-
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -57,7 +53,6 @@ static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
-static void MX_DMA_Init(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -307,47 +302,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(LG3_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
-  /* Configure GPIO pin Output Levels */
-  HAL_GPIO_WritePin(LR1_GPIO_Port, LR1_Pin, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(LG1_GPIO_Port, LG1_Pin, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(LB1_GPIO_Port, LB1_Pin, GPIO_PIN_SET);
-
-  /* Configure LED 1 Parameters */
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-
-  /* Configure LED 1 GPIO pins : LR1_Pin LG1_Pin LB1_Pin */
-  GPIO_InitStruct.Pin = LR1_Pin;
-  HAL_GPIO_Init(LR1_GPIO_Port, &GPIO_InitStruct);
-
-  GPIO_InitStruct.Pin = LG1_Pin;
-  HAL_GPIO_Init(LG1_GPIO_Port, &GPIO_InitStruct);
-
-  GPIO_InitStruct.Pin = LB1_Pin;
-  HAL_GPIO_Init(LB1_GPIO_Port, &GPIO_InitStruct);
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
-static void MX_DMA_Init(void)
-{
-
-  /* DMA controller clock enable */
-  __HAL_RCC_DMA1_CLK_ENABLE();
-
-  /* DMA interrupt init */
-  /* DMA1_Channel2_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
-  /* DMA1_Channel5_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
-  /* DMA1_Channel7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
-
-}
 /* USER CODE END 4 */
 
 /**
