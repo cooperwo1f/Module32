@@ -1,8 +1,6 @@
 #ifndef __LED_H
 #define __LED_H
 
-#include "stm32f1xx_hal_gpio.h"
-#include "stm32f1xx_hal_tim.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,40 +28,32 @@ extern "C" {
 #define LG3_ADDR (BASE_ADDR + L3_OFFSET + G_OFFSET)
 #define LB3_ADDR (BASE_ADDR + L3_OFFSET + B_OFFSET)
 
-#define START_ADDR BASE_ADDR
-#define END_ADDR LB3_ADDR
+void led_pwm(uint32_t* buf, size_t len, uint16_t pin, size_t duty) {
+    for (size_t i = 0; i < len; i++) {
+        if (i > duty) {
+            buf[i] &= (uint32_t)~(pin << 16);
+            buf[i] |= (uint32_t)(pin);
+        }
 
-#define LR1 LR1_GPIO_Port, LR1_Pin
-#define LG1 LG1_GPIO_Port, LG1_Pin
-#define LB1 LB1_GPIO_Port, LB1_Pin
-
-#define LR2 LR2_GPIO_Port, LR2_Pin
-#define LG2 LG2_GPIO_Port, LG2_Pin
-#define LB2 LB2_GPIO_Port, LB2_Pin
-
-#define LR3 LR3_GPIO_Port, LR3_Pin
-#define LG3 LG3_GPIO_Port, LG3_Pin
-#define LB3 LB3_GPIO_Port, LB3_Pin
-
-#define LED_ON(LED) HAL_GPIO_WritePin(LED, GPIO_PIN_RESET)
-#define LED_OFF(LED) HAL_GPIO_WritePin(LED, GPIO_PIN_SET)
-
-void led_pwm(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint8_t value) {
-    HAL_GPIO_WritePin(GPIOx, GPIO_Pin, value ? GPIO_PIN_RESET : GPIO_PIN_SET);
+        else {
+            buf[i] &= (uint32_t)~(pin);
+            buf[i] |= (uint32_t)(pin << 16);
+        }
+    }
 }
 
-void led_write(size_t index, uint8_t value) {
-    if (index == LR1_ADDR) { led_pwm(LR1, value); }
-    if (index == LG1_ADDR) { led_pwm(LG1, value); }
-    if (index == LB1_ADDR) { led_pwm(LB1, value); }
+void led_write(uint32_t* buf_A, uint32_t* buf_B, size_t len, size_t index, size_t value) {
+    if (index == LR1_ADDR) { led_pwm(buf_A, len, LR1_Pin, value); }
+    if (index == LG1_ADDR) { led_pwm(buf_A, len, LG1_Pin, value); }
+    if (index == LB1_ADDR) { led_pwm(buf_A, len, LB1_Pin, value); }
 
-    if (index == LR2_ADDR) { led_pwm(LR2, value); }
-    if (index == LG2_ADDR) { led_pwm(LG2, value); }
-    if (index == LB2_ADDR) { led_pwm(LB2, value); }
+    if (index == LR2_ADDR) { led_pwm(buf_A, len, LR2_Pin, value); }
+    if (index == LG2_ADDR) { led_pwm(buf_A, len, LG2_Pin, value); }
+    if (index == LB2_ADDR) { led_pwm(buf_A, len, LB2_Pin, value); }
 
-    if (index == LR3_ADDR) { led_pwm(LR3, value); }
-    if (index == LG3_ADDR) { led_pwm(LG3, value); }
-    if (index == LB3_ADDR) { led_pwm(LB3, value); }
+    if (index == LR3_ADDR) { led_pwm(buf_A, len, LR3_Pin, value); }
+    if (index == LG3_ADDR) { led_pwm(buf_A, len, LG3_Pin, value); }
+    if (index == LB3_ADDR) { led_pwm(buf_B, len, LB3_Pin, value); }
 }
 
 #ifdef __cplusplus
