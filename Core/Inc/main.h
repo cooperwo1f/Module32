@@ -63,11 +63,11 @@ void Error_Handler(void);
 #define LR1_GPIO_Port GPIOA
 #define LB1_Pin GPIO_PIN_4
 #define LB1_GPIO_Port GPIOA
-#define LG2_Pin GPIO_PIN_5
+#define LG2_Pin GPIO_PIN_7
 #define LG2_GPIO_Port GPIOA
 #define LR2_Pin GPIO_PIN_6
 #define LR2_GPIO_Port GPIOA
-#define LB2_Pin GPIO_PIN_7
+#define LB2_Pin GPIO_PIN_5
 #define LB2_GPIO_Port GPIOA
 #define LG3_Pin GPIO_PIN_11
 #define LG3_GPIO_Port GPIOB

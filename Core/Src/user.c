@@ -26,8 +26,6 @@ uint32_t data_B[256];
 void init(void) {
 	memset(&channels, 0, sizeof(channels));
 
-	channels[0] = 255;
-
 	memset(&data_A, 0, sizeof(data_A));
 	memset(&data_B, 0, sizeof(data_B));
 
