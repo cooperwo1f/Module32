@@ -143,34 +143,6 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     __HAL_LINKDMA(htim_base,hdma[TIM_DMA_ID_UPDATE],hdma_tim3_up);
   /* USER CODE END TIM3_MspInit 1 */
   }
-  else if(htim_base->Instance==TIM4)
-  {
-  /* USER CODE BEGIN TIM4_MspInit 0 */
-
-  /* USER CODE END TIM4_MspInit 0 */
-    /* Peripheral clock enable */
-    __HAL_RCC_TIM4_CLK_ENABLE();
-  /* USER CODE BEGIN TIM4_MspInit 1 */
-    /* TIM4 DMA Init */
-    /* TIM4_UP Init */
-    hdma_tim4_up.Instance = DMA1_Channel7;
-    hdma_tim4_up.Init.Direction = DMA_MEMORY_TO_PERIPH;
-    hdma_tim4_up.Init.PeriphInc = DMA_PINC_DISABLE;
-    hdma_tim4_up.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_tim4_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-    hdma_tim4_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-    hdma_tim4_up.Init.Mode = DMA_CIRCULAR;
-    hdma_tim4_up.Init.Priority = DMA_PRIORITY_LOW;
-    if (HAL_DMA_Init(&hdma_tim4_up) != HAL_OK)
-    {
-      Error_Handler();
-    }
-
-    __HAL_LINKDMA(htim_base,hdma[TIM_DMA_ID_UPDATE],hdma_tim4_up);
-
-  /* USER CODE END TIM4_MspInit 1 */
-  }
-
 }
 
 /**
