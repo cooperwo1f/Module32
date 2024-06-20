@@ -10,7 +10,6 @@ extern "C" {
 
 #define L1_OFFSET 0
 #define L2_OFFSET 3
-#define L3_OFFSET 6
 
 #define R_OFFSET 0
 #define G_OFFSET 1
@@ -23,10 +22,6 @@ extern "C" {
 #define LR2_ADDR (BASE_ADDR + L2_OFFSET + R_OFFSET)
 #define LG2_ADDR (BASE_ADDR + L2_OFFSET + G_OFFSET)
 #define LB2_ADDR (BASE_ADDR + L2_OFFSET + B_OFFSET)
-
-#define LR3_ADDR (BASE_ADDR + L3_OFFSET + R_OFFSET)
-#define LG3_ADDR (BASE_ADDR + L3_OFFSET + G_OFFSET)
-#define LB3_ADDR (BASE_ADDR + L3_OFFSET + B_OFFSET)
 
 void led_pwm(uint32_t* buf, size_t len, uint16_t pin, size_t duty) {
     for (size_t i = 0; i < len; i++) {
@@ -50,10 +45,6 @@ void led_write(uint32_t* buf_A, uint32_t* buf_B, size_t len, size_t index, size_
     if (index == LR2_ADDR) { led_pwm(buf_A, len, LR2_Pin, value); }
     if (index == LG2_ADDR) { led_pwm(buf_A, len, LG2_Pin, value); }
     if (index == LB2_ADDR) { led_pwm(buf_A, len, LB2_Pin, value); }
-
-    if (index == LR3_ADDR) { led_pwm(buf_A, len, LR3_Pin, value); }
-    if (index == LG3_ADDR) { led_pwm(buf_A, len, LG3_Pin, value); }
-    if (index == LB3_ADDR) { led_pwm(buf_B, len, LB3_Pin, value); }
 }
 
 #ifdef __cplusplus

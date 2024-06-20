@@ -15,7 +15,7 @@ extern TIM_HandleTypeDef htim3;
 
 /* DMA HANDLERS */
 extern DMA_HandleTypeDef hdma_tim2_up;
-extern DMA_HandleTypeDef hdma_tim3_up;
+extern DMA_HandleTypeDef hdma_tim3_ch4_up;
 
 /* ARRAY CONTAINING LED CHANNEL VALUES */
 #define CHANNELS_LENGTH 256
@@ -37,7 +37,7 @@ void init(void) {
 
 	/* CONFIGURE DMA */
 	HAL_DMA_Start(&hdma_tim2_up, (uint32_t)&(data_A[0]), (uint32_t)&(GPIOA->BSRR), sizeof(data_A)/sizeof(data_A[0]));
-	HAL_DMA_Start(&hdma_tim3_up, (uint32_t)&(data_B[0]), (uint32_t)&(GPIOB->BSRR), sizeof(data_B)/sizeof(data_B[0]));
+	HAL_DMA_Start(&hdma_tim3_ch4_up, (uint32_t)&(data_B[0]), (uint32_t)&(GPIOB->BSRR), sizeof(data_B)/sizeof(data_B[0]));
 
 	/* START DMA */
 	__HAL_TIM_ENABLE_DMA(&htim2, TIM_DMA_UPDATE);
