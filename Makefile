@@ -13,7 +13,7 @@
 ######################################
 # target
 ######################################
-TARGET = Dash
+TARGET = STM32_MODULE
 
 ######################################
 # building variables
@@ -29,7 +29,8 @@ OPT = -Og
 # Build path
 BUILD_DIR = build
 # ST-LINK cli exec directory
-ST-LINK = ST-LINK_CLI.exe
+ST-LINK = st-flash
+ST-TRACE = st-trace
 # Compile flags
 COMPILE_FLAGS = compile_flags.txt
 
@@ -167,7 +168,12 @@ $(BUILD_DIR):
 
 .PHONY: program
 program: $(BUILD_DIR)/$(TARGET).bin
-	printf '\n' | $(ST-LINK) -P build/Dash.bin 0x08000000 -V -Q -run
+#	printf '\n' | $(ST-LINK) -P build/Dash.bin 0x08000000 -V -Q -run
+	$(ST-LINK) write $(BUILD_DIR)/$(TARGET).bin 0x08000000
+
+.PHONY: trace
+trace:
+	$(ST-TRACE) --clock=72
 
 #######################################
 # clean up
