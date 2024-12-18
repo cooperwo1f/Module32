@@ -213,3 +213,13 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+#############
+## Kicad
+#############
+
+*-backups/
+*.kicad_prl
+fp-info-cache
+*.lck
